@@ -15,18 +15,19 @@ class Comparador {
 
 	private Map<String, String> Asignacion;
 	private Set<String> AsignacionNotificar;
-	private Factory Factory;
+	private Factory<MedioNotificacion> Factory;
 	
 	Comparador(){
 		this.Asignacion = new HashMap<String, String>();
 		this.AsignacionNotificar = new HashSet<String>();
-		this.Factory = new Factory();
+		this.Factory = new Factory<MedioNotificacion>(System.getProperty("user.dir"));
 	}
 	
     public Boolean ComprobarNovedades(Map<String, String> AsignacionNueva)
     {
         Boolean resultado = true;
-
+        Asignacion.put("001", "7000");
+		AsignacionNotificar.add("001");
         
         Map<String, String> diferencia = AsignacionNueva.entrySet().stream().filter(nuevo -> this.AsignacionNotificar.contains(nuevo.getKey()))
         		.filter( nuevo -> this.Asignacion.getOrDefault(nuevo.getKey(),"") != nuevo.getValue())
@@ -37,7 +38,7 @@ class Comparador {
         {
             try
             {
-                Set<MedioNotificacion> Notificadores = this.Factory.BuscarNotificadores();
+                Set<MedioNotificacion> Notificadores = this.Factory.ListarImplementaciones(MedioNotificacion.class);
                 if (Notificadores.size() > 0)
                 {
                 	Notificadores.forEach(notificar -> 

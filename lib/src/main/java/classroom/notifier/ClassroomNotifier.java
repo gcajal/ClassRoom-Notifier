@@ -37,6 +37,7 @@ public class ClassroomNotifier extends Observable {
 	         //AsignacionNotificar = data.ListarComisionesNotificar();
 	         //Asignacion = data.ListarAulasPorComision();
 	         //AsignacionNueva = data.ListarNuevasAulasPorComision();
+	    	 AsignacionNueva.put("001", "7010");
 	    	 
 	    	 //Cargar AsignacionNueva
 	         resultado = this.Comparador.ComprobarNovedades(AsignacionNueva);
