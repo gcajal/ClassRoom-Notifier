@@ -3,9 +3,10 @@
  */
 package classroom.notifier;
 
+import classroom.notifier.entity.Observable;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Observable;
 
 public class ClassroomNotifier extends Observable {
 	
@@ -14,9 +15,8 @@ public class ClassroomNotifier extends Observable {
 	
 	public ClassroomNotifier(String[] args)
 	{
-
+		super();
 	    StartConfig(args);
-
 	    this.AsignacionNueva = new HashMap<String,String>();
 	    this.Comparador = new Comparador();
 
@@ -24,9 +24,9 @@ public class ClassroomNotifier extends Observable {
 	
 	 private void StartConfig(String[] args)
 	 {
-	  if(args.length > 1) {
-		  
-	  }
+		if(args.length > 1) {
+
+		}
 	 }
 	 
 	 public Boolean EvaluarDiferencias()
