@@ -24,7 +24,9 @@ public class ClassroomNotifier extends Observable {
 	
 	 private void StartConfig(String[] args)
 	 {
-	     
+	  if(args.length > 1) {
+		  
+	  }
 	 }
 	 
 	 public Boolean EvaluarDiferencias()
