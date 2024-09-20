@@ -10,7 +10,7 @@ import classroom.notifier.entity.implement.MedioNotificacion;
 import classroom.notifier.entity.implement.NotifierListeners;
 import classroom.notifier.entity.implement.Observer;
 
-class MateriasActuales extends Observable implements NotifierListeners {
+public class MateriasActuales extends Observable implements NotifierListeners {
 
     private Map<String, String> Asignacion;
     private Set<String> AsignacionNotificar;
@@ -22,7 +22,7 @@ class MateriasActuales extends Observable implements NotifierListeners {
         this.Factory = new Factory<>(System.getProperty("user.dir"));
     }
 
-    public void ComprobarNovedades(Map<String, String> AsignacionNueva) {
+    protected void ComprobarNovedades(Map<String, String> AsignacionNueva) {
         Asignacion.put("001", "7000");
         AsignacionNotificar.add("001");
 
