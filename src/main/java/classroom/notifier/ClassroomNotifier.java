@@ -17,7 +17,7 @@ public class ClassroomNotifier extends Observable {
 	{
 		super();
 	    StartConfig(args);
-	    this.AsignacionNueva = new HashMap<String,String>();
+	    this.AsignacionNueva = new HashMap<>();
 	    this.Comparador = new Comparador();
 
 	}
@@ -29,9 +29,8 @@ public class ClassroomNotifier extends Observable {
 		}
 	 }
 	 
-	 public Boolean EvaluarDiferencias()
+	 public void EvaluarDiferencias()
 	 {
-		 Boolean resultado = false;
 
 	     try
 	     {
@@ -42,14 +41,12 @@ public class ClassroomNotifier extends Observable {
 	    	 AsignacionNueva.put("001", "7010");
 	    	 
 	    	 //Cargar AsignacionNueva
-	         resultado = this.Comparador.ComprobarNovedades(AsignacionNueva);
+	         this.Comparador.ComprobarNovedades(AsignacionNueva);
 	     }
 	     catch (Exception ex)
 	     {
-	         resultado = false;
+			 System.out.println("Error: " + ex);
 	     }
-
-	     return resultado;
 
 	 }
 }
