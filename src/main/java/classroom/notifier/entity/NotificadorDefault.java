@@ -17,9 +17,10 @@ class NotificadorDefault implements MedioNotificacion {
 	//Se puede agregar datos del destinatario
 	public void Notificar(Map<String, String> cambiosANotificar) {
 
-		List<String> materias = cambiosANotificar.entrySet().stream()
-				.map(entry -> entry.getKey() + ": " + entry.getValue())  // Puedes modificar este map según tus necesidades
-				.collect(Collectors.toList());
+		List<String> materias = new ArrayList<>(cambiosANotificar.keySet());
+				//.stream()
+				//.map(entry -> entry.getKey() + ": " + entry.getValue())  // Puedes modificar este map según tus necesidades
+				//.collect(Collectors.toList());
 		listeners.forEach(  listener -> listener.enviarRefrescarLista(materias));
 
 	}
