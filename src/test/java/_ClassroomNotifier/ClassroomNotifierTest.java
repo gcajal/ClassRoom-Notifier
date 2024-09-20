@@ -3,6 +3,7 @@
  */
 package _ClassroomNotifier;
 
+import classroom.notifier.entity.DataFromFile;
 import classroom.notifier.entity.Factory;
 import classroom.notifier.entity.NotificadorDefault;
 import classroom.notifier.entity.implement.MedioNotificacion;
@@ -19,7 +20,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ClassroomNotifierTest {
     @Test void someLibraryMethodReturnsTrue() {
-        String[] args = new String[2];
+        String[] args = new String[]{
+                "stockNotificar.json"
+                ,"stockActual.json"
+        };
         ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
         classUnderTest.EvaluarDiferencias();
         assertTrue(true, "EvaluarDiferencias should return 'true'");
@@ -38,5 +42,13 @@ class ClassroomNotifierTest {
 
         Set<MedioNotificacion> lista = Factory.ListarImplementaciones(MedioNotificacion.class);
         assertTrue(lista != null, "EvaluarDiferencias should return 'true'");
+    }
+
+    @Test void validReadFile(){
+        DataFromFile data = new DataFromFile("stockNotificar.json","stockActual.json");
+
+        Set<String> lista = data.ListarMateriasInscriptas();
+        Map<String,String> mapa = data.ListarMateriasAulas();
+        assertTrue(lista != null && mapa != null, "EvaluarDiferencias should return 'true'");
     }
 }

@@ -30,10 +30,14 @@ public class ClassroomNotifier extends Observable{
 		if(args.length > 1) {
 			this.Database = new DataFromFile(args[0],args[1]);
 		}
+		else {
+			System.out.printf("No se informo modelo de acceso de datos");
+		}
 	 }
 	 
 	 public void EvaluarDiferencias()
 	 {
+
 
 	     try
 	     {
@@ -41,7 +45,9 @@ public class ClassroomNotifier extends Observable{
 	         //AsignacionNotificar = data.ListarComisionesNotificar();
 	         //Asignacion = data.ListarAulasPorComision();
 	         //AsignacionNueva = data.ListarNuevasAulasPorComision();
-	    	 AsignacionNueva.put("001", "7010");
+	    	 //AsignacionNueva.put("001", "7010");
+
+			 AsignacionNueva = Database.ListarMateriasAulas();
 	    	 
 	    	 //Cargar AsignacionNueva
 	         this.Comparador.ComprobarNovedades(AsignacionNueva);

@@ -28,7 +28,7 @@ public class DataFromFile implements LecturaDatos {
 
         Map<String, String> resultado = new HashMap<String,String>();
         try{
-            String content = new String(Files.readAllBytes(Paths.get(archivosOrigenMaterias)));
+            String content = ReadFile(archivosOrigenMaterias);
 
         // Crear instancia de ObjectMapper
             JSONObject json = new JSONObject(content);
@@ -40,7 +40,7 @@ public class DataFromFile implements LecturaDatos {
                 String aula = amigo.getString("aula");
                 resultado.put(nombre,aula);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -51,22 +51,34 @@ public class DataFromFile implements LecturaDatos {
     public Set<String> ListarMateriasInscriptas() {
         Set<String> resultado = new HashSet<String>();
         try{
-            String content = new String(Files.readAllBytes(Paths.get(archivosOrigenInscriptas)));
+            String content = ReadFile(archivosOrigenInscriptas);
 
             // Crear instancia de ObjectMapper
             JSONObject json = new JSONObject(content);
             JSONArray materias = json.getJSONArray("materias");
             // Recorrer los elementos del JSONArray
             for (int i = 0; i < materias.length(); i++) {
-                JSONObject amigo = materias.getJSONObject(i);
-                String nombreMateria = amigo.getString(Integer.toString(i));
+                String nombreMateria = materias.getString(i);
 
                 resultado.add(nombreMateria);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return resultado;
+    }
+
+    private String ReadFile(String file){
+        String content = "";
+        try{
+            content = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir")+"/"+file)));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return content;
+
     }
 }
