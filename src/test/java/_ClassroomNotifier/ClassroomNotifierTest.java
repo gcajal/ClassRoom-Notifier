@@ -3,9 +3,13 @@
  */
 package _ClassroomNotifier;
 
+import classroom.notifier.entity.NotificadorDefault;
 import org.junit.jupiter.api.Test;
 
 import classroom.notifier.ClassroomNotifier;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +18,14 @@ class ClassroomNotifierTest {
         String[] args = new String[2];
         ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
         classUnderTest.EvaluarDiferencias();
+        assertTrue(true, "EvaluarDiferencias should return 'true'");
+    }
+
+    @Test void validNotificadorDefault() {
+        Map<String,String> lista = new HashMap<>();
+        lista.put("001","7010");
+        NotificadorDefault classUnderTest = new NotificadorDefault();
+        classUnderTest.Notificar(lista);
         assertTrue(true, "EvaluarDiferencias should return 'true'");
     }
 }
