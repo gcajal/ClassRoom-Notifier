@@ -5,9 +5,11 @@ import java.util.Set;
 
 public abstract class Observable {
     Set<Observer> observers;
+    private boolean changed;
 
     public Observable(){
         this.observers = new HashSet<Observer>();
+        this.changed = false;
     }
 
     public synchronized void addObserver(Observer o) {
@@ -16,6 +18,14 @@ public abstract class Observable {
         if (!observers.contains(o)) {
             observers.add(o);
         }
+    }
+
+    protected synchronized void setChanged() {
+        changed = true;
+    }
+
+    protected synchronized void clearChanged() {
+        changed = false;
     }
 
     /**
@@ -28,10 +38,15 @@ public abstract class Observable {
     }
 
     public synchronized  void notifyObservers(Object arg){
+
+        if (!changed) return;
+
         Object[] arrLocal = observers.toArray();
 
         for (int i = arrLocal.length-1; i>=0; i--)
             ((Observer)arrLocal[i]).update(this, arg);
+
+        clearChanged();
     }
 
 }
