@@ -4,6 +4,7 @@ import classroom.notifier.entity.implement.MedioNotificacion;
 import classroom.notifier.entity.implement.NotifierListeners;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class NotificadorDefault implements MedioNotificacion {
 	
@@ -16,10 +17,9 @@ class NotificadorDefault implements MedioNotificacion {
 	//Se puede agregar datos del destinatario
 	public void Notificar(Map<String, String> cambiosANotificar) {
 
-		List<String> materias = cambiosANotificar
-					.entrySet()
-					.stream()
-					.map( e -> e.getKey() + " " + e.getValue()).toList();
+		List<String> materias = cambiosANotificar.entrySet().stream()
+				.map(entry -> entry.getKey() + ": " + entry.getValue())  // Puedes modificar este map según tus necesidades
+				.collect(Collectors.toList());
 		listeners.forEach(  listener -> listener.enviarRefrescarLista(materias));
 
 	}
