@@ -31,7 +31,8 @@ public class MateriasActuales extends Observable implements NotifierListeners {
         //AsignacionNotificar.add("001");
 
         Map<String, String> diferencia = AsignacionNueva.entrySet().stream().filter(nuevo -> this.AsignacionNotificar.contains(nuevo.getKey()))
-                .filter(nuevo -> this.Asignacion.getOrDefault(nuevo.getKey(), "") != nuevo.getValue())
+                .filter(nuevo ->
+                        !this.Asignacion.getOrDefault(nuevo.getKey(), "").equals(nuevo.getValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 
