@@ -34,7 +34,7 @@ public class Factory<T> {
                     .filter(Files::isRegularFile)  // Filtrar solo archivos
                     .filter(file -> file.toString().endsWith(".jar"))  // Filtrar archivos que terminan en .class
                     .map(Path::toFile)  // Convertir Path a File
-                    .toList();  // Recopilar en una lista
+                    .collect(Collectors.toList());  // Recopilar en una lista
 
 
             if (files != null) {
