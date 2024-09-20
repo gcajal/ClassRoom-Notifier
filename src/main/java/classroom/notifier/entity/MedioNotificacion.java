@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface MedioNotificacion{
 
-	public void Notificar(Map<String, String> cambiosANotificar);
+	void Notificar(Map<String, String> cambiosANotificar);
 }
