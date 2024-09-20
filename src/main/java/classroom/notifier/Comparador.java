@@ -18,14 +18,13 @@ class Comparador {
 	private Factory<MedioNotificacion> Factory;
 	
 	Comparador(){
-		this.Asignacion = new HashMap<String, String>();
-		this.AsignacionNotificar = new HashSet<String>();
-		this.Factory = new Factory<MedioNotificacion>(System.getProperty("user.dir"));
+		this.Asignacion = new HashMap<>();
+		this.AsignacionNotificar = new HashSet<>();
+		this.Factory = new Factory<>(System.getProperty("user.dir"));
 	}
 	
-    public Boolean ComprobarNovedades(Map<String, String> AsignacionNueva)
+    public void ComprobarNovedades(Map<String, String> AsignacionNueva)
     {
-        Boolean resultado = true;
         Asignacion.put("001", "7000");
 		AsignacionNotificar.add("001");
         
@@ -51,10 +50,8 @@ class Comparador {
             }
             catch (Exception ex)
             {
-                resultado = false;
+                System.out.println("Error: " + ex);
             }
         }
-
-        return resultado;
     }
 }
