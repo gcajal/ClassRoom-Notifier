@@ -23,7 +23,7 @@ public class MateriasActuales extends Observable implements NotifierListeners {
         this.Factory = new Factory<>(System.getProperty("user.dir"));
         //this.Database = Database;
         Asignacion = Database.ListarMateriasAulas();
-        AsignacionNotificar = Database.ListarMateriasInscriptas()
+        AsignacionNotificar = Database.ListarMateriasInscriptas();
     }
 
     protected void ComprobarNovedades(Map<String, String> AsignacionNueva) {
