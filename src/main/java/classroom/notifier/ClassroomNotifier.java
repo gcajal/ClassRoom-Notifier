@@ -3,29 +3,32 @@
  */
 package classroom.notifier;
 
+import classroom.notifier.entity.DataFromFile;
 import classroom.notifier.entity.Observable;
+import classroom.notifier.entity.implement.LecturaDatos;
+import classroom.notifier.entity.implement.Observer;
 
 import java.util.HashMap;
 import java.util.Map;
-
-public class ClassroomNotifier extends Observable {
+public class ClassroomNotifier extends Observable{
 	
 	private Map<String, String> AsignacionNueva;
-	private Comparador Comparador;
+	private MateriasActuales Comparador;
+	private LecturaDatos Database;
 	
 	public ClassroomNotifier(String[] args)
 	{
 		super();
 	    StartConfig(args);
-	    this.AsignacionNueva = new HashMap<>();
-	    this.Comparador = new Comparador();
+	    this.AsignacionNueva = new HashMap<String,String>();
+	    this.Comparador = new MateriasActuales(Database);
 
 	}
 	
 	 private void StartConfig(String[] args)
 	 {
 		if(args.length > 1) {
-
+			this.Database = new DataFromFile(args[0],args[1]);
 		}
 	 }
 	 
@@ -45,8 +48,13 @@ public class ClassroomNotifier extends Observable {
 	     }
 	     catch (Exception ex)
 	     {
-			 System.out.println("Error: " + ex);
+			 ex.printStackTrace();
 	     }
 
 	 }
+
+	 public MateriasActuales getActualizadorMaterias(){
+		return this.Comparador;
+	 }
+
 }

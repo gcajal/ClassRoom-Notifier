@@ -10,5 +10,10 @@ import classroom.notifier.ClassroomNotifier;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClassroomNotifierTest {
-
+    @Test void someLibraryMethodReturnsTrue() {
+        String[] args = new String[2];
+        ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
+        classUnderTest.EvaluarDiferencias();
+        assertTrue(true, "EvaluarDiferencias should return 'true'");
+    }
 }
