@@ -1,4 +1,4 @@
-package classroom.notifier.entity.implement;
+package classroom.notifier.implement;
 
 import classroom.notifier.entity.Observable;
 

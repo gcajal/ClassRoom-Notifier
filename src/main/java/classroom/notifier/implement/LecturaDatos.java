@@ -1,4 +1,4 @@
-package classroom.notifier.entity.implement;
+package classroom.notifier.implement;
 
 import java.util.Map;
 import java.util.Set;

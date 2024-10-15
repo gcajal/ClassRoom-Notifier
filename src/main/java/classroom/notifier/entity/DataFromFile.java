@@ -1,11 +1,9 @@
 package classroom.notifier.entity;
 
-import classroom.notifier.entity.implement.LecturaDatos;
+import classroom.notifier.implement.Filter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -13,7 +11,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class DataFromFile implements LecturaDatos {
+public class DataFromFile extends Observable implements Filter {
     private String archivosOrigenMaterias;
     private String archivosOrigenInscriptas;
 
@@ -23,7 +21,7 @@ public class DataFromFile implements LecturaDatos {
     }
 
 
-    @Override
+
     public Map<String, String> ListarMateriasAulas() {
 
         Map<String, String> resultado = new HashMap<String,String>();
@@ -47,7 +45,7 @@ public class DataFromFile implements LecturaDatos {
         return resultado;
     }
 
-    @Override
+
     public Set<String> ListarMateriasInscriptas() {
         Set<String> resultado = new HashSet<String>();
         try{
@@ -79,6 +77,11 @@ public class DataFromFile implements LecturaDatos {
         }
 
         return content;
+
+    }
+
+    @Override
+    public void execute(Map<String, String> asignacion) {
 
     }
 }

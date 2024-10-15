@@ -5,23 +5,16 @@ package classroom.notifier;
 
 import classroom.notifier.entity.DataFromFile;
 import classroom.notifier.entity.Observable;
-import classroom.notifier.entity.implement.LecturaDatos;
-import classroom.notifier.entity.implement.Observer;
 
-import java.util.HashMap;
-import java.util.Map;
 public class ClassroomNotifier extends Observable{
-	
-	private Map<String, String> AsignacionNueva;
-	private MateriasActuales Comparador;
-	private LecturaDatos Database;
+
+	private Notificador Comparador;
+	private DataFromFile Database;
 	
 	public ClassroomNotifier(String[] args)
 	{
 		super();
 	    StartConfig(args);
-	    this.AsignacionNueva = new HashMap<String,String>();
-	    this.Comparador = new MateriasActuales(Database);
 
 	}
 	
@@ -34,32 +27,9 @@ public class ClassroomNotifier extends Observable{
 			System.out.printf("No se informo modelo de acceso de datos");
 		}
 	 }
-	 
-	 public void EvaluarDiferencias()
-	 {
 
 
-	     try
-	     {
-	         //DataAccess data = Factory.Factory.InstanciarElemento<DataAccess>("DATA");
-	         //AsignacionNotificar = data.ListarComisionesNotificar();
-	         //Asignacion = data.ListarAulasPorComision();
-	         //AsignacionNueva = data.ListarNuevasAulasPorComision();
-	    	 //AsignacionNueva.put("001", "7010");
-
-			 AsignacionNueva = Database.ListarMateriasAulas();
-	    	 
-	    	 //Cargar AsignacionNueva
-	         this.Comparador.ComprobarNovedades(AsignacionNueva);
-	     }
-	     catch (Exception ex)
-	     {
-			 ex.printStackTrace();
-	     }
-
-	 }
-
-	 public MateriasActuales getActualizadorMaterias(){
+	 public Notificador getActualizadorMaterias(){
 		return this.Comparador;
 	 }
 

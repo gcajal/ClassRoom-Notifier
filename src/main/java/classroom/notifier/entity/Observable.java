@@ -1,6 +1,6 @@
 package classroom.notifier.entity;
 
-import classroom.notifier.entity.implement.Observer;
+import classroom.notifier.implement.Observer;
 
 import java.util.HashSet;
 import java.util.Set;

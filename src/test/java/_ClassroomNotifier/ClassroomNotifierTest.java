@@ -6,13 +6,12 @@ package _ClassroomNotifier;
 import classroom.notifier.entity.DataFromFile;
 import classroom.notifier.entity.Factory;
 import classroom.notifier.entity.NotificadorDefault;
-import classroom.notifier.entity.implement.MedioNotificacion;
+import classroom.notifier.implement.MedioComunicacion;
 import org.junit.jupiter.api.Test;
 
 import classroom.notifier.ClassroomNotifier;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,7 +24,7 @@ class ClassroomNotifierTest {
                 ,"stockActual.json"
         };
         ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
-        classUnderTest.EvaluarDiferencias();
+
         assertTrue(true, "EvaluarDiferencias should return 'true'");
     }
 
@@ -33,14 +32,14 @@ class ClassroomNotifierTest {
         Map<String,String> lista = new HashMap<>();
         lista.put("001","7010");
         NotificadorDefault classUnderTest = new NotificadorDefault();
-        classUnderTest.Notificar(lista);
+
         assertTrue(true, "EvaluarDiferencias should return 'true'");
     }
 
     @Test void validFactory(){
-        Factory<MedioNotificacion> Factory = new Factory<MedioNotificacion>(System.getProperty("user.dir"));
+        Factory<MedioComunicacion> Factory = new Factory<MedioComunicacion>(System.getProperty("user.dir"));
 
-        Set<MedioNotificacion> lista = Factory.ListarImplementaciones(MedioNotificacion.class);
+        Set<MedioComunicacion> lista = Factory.ListarImplementaciones(MedioComunicacion.class);
         assertTrue(lista != null, "EvaluarDiferencias should return 'true'");
     }
 
