@@ -17,4 +17,9 @@ public class NotificadorDefault extends Observable implements MedioComunicacion 
 		String result = Materia + ": " + Aula;
 		notifyObservers(result);
 	}
+
+	@Override
+	public String getMedio() {
+		return "View";
+	}
 }

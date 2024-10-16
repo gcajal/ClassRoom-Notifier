@@ -8,4 +8,5 @@ import java.util.Map;
 public interface MedioComunicacion {
 
 	void Notificar(String Materia, String Aula, List<Alumno> destinatarios);
+	String getMedio();
 }
