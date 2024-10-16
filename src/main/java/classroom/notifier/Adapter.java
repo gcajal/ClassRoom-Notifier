@@ -13,7 +13,7 @@ public class Adapter extends Observable implements Observer {
     private Map<String, List<Alumno>> Inscriptos;
     private Notificador notificador;
 
-    protected Adapter(Map<String, List<Alumno>> Inscriptos, Notificador notificador){
+    Adapter(Map<String, List<Alumno>> Inscriptos, Notificador notificador){
         super();
         this.Inscriptos = Inscriptos;
         this.notificador = notificador;

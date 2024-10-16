@@ -3,15 +3,14 @@
  */
 package _ClassroomNotifier;
 
-import classroom.notifier.entity.DataFromFile;
-import classroom.notifier.entity.Factory;
-import classroom.notifier.entity.NotificadorDefault;
+import classroom.notifier.entity.*;
 import classroom.notifier.implement.MedioComunicacion;
 import org.junit.jupiter.api.Test;
 
 import classroom.notifier.ClassroomNotifier;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,16 +36,16 @@ class ClassroomNotifierTest {
     }
 
     @Test void validFactory(){
-        Factory<MedioComunicacion> Factory = new Factory<MedioComunicacion>(System.getProperty("user.dir"));
-
-        Set<MedioComunicacion> lista = Factory.ListarImplementaciones(MedioComunicacion.class);
+        Discover<MedioComunicacion> Discover = new Discover<MedioComunicacion>(System.getProperty("user.dir"),MedioComunicacion.class);
+        Factory<MedioComunicacion> Factory = new Factory<MedioComunicacion>(Discover);
+        Set<MedioComunicacion> lista = Factory.ListarImplementaciones();
         assertTrue(lista != null, "EvaluarDiferencias should return 'true'");
     }
 
     @Test void validReadFile(){
         DataFromFile data = new DataFromFile("stockNotificar.json","stockActual.json");
 
-        Set<String> lista = data.ListarMateriasInscriptas();
+        Map<String, List<Alumno>> lista = data.ListarMateriasInscriptas();
         Map<String,String> mapa = data.ListarMateriasAulas();
         assertTrue(lista != null && mapa != null, "EvaluarDiferencias should return 'true'");
     }

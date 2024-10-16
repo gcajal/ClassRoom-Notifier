@@ -6,18 +6,21 @@ import org.json.JSONObject;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public class DataFromFile extends Observable implements Filter {
+public class DataFromFile implements Filter {
     private String archivosOrigenMaterias;
     private String archivosOrigenInscriptas;
+    List<Filter> filters;
 
     public DataFromFile(String archivosOrigenInscriptas, String archivosOrigenMaterias){
         this.archivosOrigenMaterias = archivosOrigenMaterias;
         this.archivosOrigenInscriptas = archivosOrigenInscriptas;
+        this.filters = new ArrayList<Filter>();
+    }
+
+    public void addFilter(Filter filter){
+        this.filters.add(filter);
     }
 
 
@@ -46,8 +49,8 @@ public class DataFromFile extends Observable implements Filter {
     }
 
 
-    public Set<String> ListarMateriasInscriptas() {
-        Set<String> resultado = new HashSet<String>();
+    public Map<String, List<Alumno>> ListarMateriasInscriptas() {
+        Map<String, List<Alumno>> resultado = new HashMap<String, List<Alumno>>();
         try{
             String content = ReadFile(archivosOrigenInscriptas);
 
@@ -58,7 +61,7 @@ public class DataFromFile extends Observable implements Filter {
             for (int i = 0; i < materias.length(); i++) {
                 String nombreMateria = materias.getString(i);
 
-                resultado.add(nombreMateria);
+                //resultado.add(nombreMateria);
             }
         } catch (Exception e) {
             e.printStackTrace();

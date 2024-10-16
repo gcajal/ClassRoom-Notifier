@@ -4,33 +4,70 @@
 package classroom.notifier;
 
 import classroom.notifier.entity.DataFromFile;
-import classroom.notifier.entity.Observable;
+import classroom.notifier.entity.Timer;
 
-public class ClassroomNotifier extends Observable{
+public class ClassroomNotifier{
 
-	private Notificador Comparador;
+	private Notificador Notificador;
+	private Adapter Adapter;
+	private Timer Timer;
+	private AdministradorMaterias AdministradorMaterias;
 	private DataFromFile Database;
+
 	
 	public ClassroomNotifier(String[] args)
 	{
 		super();
-	    StartConfig(args);
-
+	    inicilizar(args);
 	}
+
 	
-	 private void StartConfig(String[] args)
+	 private void inicilizar(String[] args)
 	 {
-		if(args.length > 1) {
-			this.Database = new DataFromFile(args[0],args[1]);
-		}
-		else {
-			System.out.printf("No se informo modelo de acceso de datos");
-		}
+
+		FactoryClassroom factoryClassroom = new FactoryClassroom(args);
+		factoryClassroom.Inicialice(this);
 	 }
 
 
-	 public Notificador getActualizadorMaterias(){
-		return this.Comparador;
-	 }
+	public classroom.notifier.Notificador getNotificador() {
+		return Notificador;
+	}
 
+	public classroom.notifier.Adapter getAdapter() {
+		return Adapter;
+	}
+
+	public classroom.notifier.entity.Timer getTimer() {
+		return Timer;
+	}
+
+	public classroom.notifier.AdministradorMaterias getAdministradorMaterias() {
+		return AdministradorMaterias;
+	}
+
+	public DataFromFile getDatabase() {
+		return Database;
+	}
+
+
+	void setNotificador(classroom.notifier.Notificador notificador) {
+		Notificador = notificador;
+	}
+
+	void setAdapter(classroom.notifier.Adapter adapter) {
+		Adapter = adapter;
+	}
+
+	void setTimer(classroom.notifier.entity.Timer timer) {
+		Timer = timer;
+	}
+
+	void setAdministradorMaterias(classroom.notifier.AdministradorMaterias administradorMaterias) {
+		AdministradorMaterias = administradorMaterias;
+	}
+
+	void setDatabase(DataFromFile database) {
+		Database = database;
+	}
 }

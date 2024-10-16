@@ -14,14 +14,7 @@ public class Notificador {
         this.notificadores = notificadores;
     }
 
-    protected void Notificar(Map<String, String> AsignacionNueva, Map<String, List<Alumno>> destinatario) {
-
-
-        //Map<String, String> diferencia = destinatario.entrySet().stream().filter(nuevo -> this.AsignacionNotificar.contains(nuevo.getKey()))
-        //        .filter(nuevo ->
-        //                !this.Asignacion.getOrDefault(nuevo.getKey(), "").equals(nuevo.getValue()))
-        //        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
+    void Notificar(Map<String, String> AsignacionNueva, Map<String, List<Alumno>> destinatario) {
 
         if (!AsignacionNueva.isEmpty() && !destinatario.isEmpty()) {
             try {
