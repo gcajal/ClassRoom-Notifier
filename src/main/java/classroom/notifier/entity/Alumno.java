@@ -5,5 +5,4 @@ public class Alumno {
     private String Email;
     private String Telefono;
     private String Documento;
-
 }

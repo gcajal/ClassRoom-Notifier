@@ -17,12 +17,12 @@ public class Timer {
     }
 
     private void inicilizar(){
-        javax.swing.Timer timer = new javax.swing.Timer(2000, e -> {
+        javax.swing.Timer timer = new javax.swing.Timer(frecuencia, e -> {
             //changesDetectedVisible = !changesDetectedVisible;
             this.notificarFilter();
         });
 
-        timer.setRepeats(false);
+        timer.setRepeats(true);
         timer.start();
     }
 

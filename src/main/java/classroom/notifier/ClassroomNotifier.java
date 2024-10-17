@@ -24,7 +24,6 @@ public class ClassroomNotifier{
 	
 	 private void inicilizar(String[] args)
 	 {
-
 		FactoryClassroom factoryClassroom = new FactoryClassroom(args);
 		factoryClassroom.Inicialice(this);
 	 }
@@ -36,10 +35,6 @@ public class ClassroomNotifier{
 
 	public classroom.notifier.Adapter getAdapter() {
 		return Adapter;
-	}
-
-	public classroom.notifier.entity.Timer getTimer() {
-		return Timer;
 	}
 
 	public classroom.notifier.AdministradorMaterias getAdministradorMaterias() {

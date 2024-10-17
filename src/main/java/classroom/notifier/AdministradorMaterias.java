@@ -16,11 +16,14 @@ public class AdministradorMaterias extends Observable implements Filter {
         this.Materias = Materias;
     }
     @Override
-    public void execute(Map<String, String> Novedad) {
-        Map<String,String> diferencia = this.Comparador.comparar(this.Materias,Novedad);
-        if(!diferencia.isEmpty()){
-            Materias = Novedad;
-            notifyObservers(diferencia);
+    public void execute(Object obj) {
+        if(obj instanceof Map<?,?>) {
+            Map<String, String> Novedad = (Map<String, String>)obj;
+            Map<String, String> diferencia = this.Comparador.comparar(this.Materias, Novedad);
+            if (!diferencia.isEmpty()) {
+                Materias = Novedad;
+                notifyObservers(diferencia);
+            }
         }
     }
 }

@@ -20,12 +20,12 @@ public class FactoryClassroom {
     protected void Inicialice(ClassroomNotifier classroomNotifier){
         Timer timer = IniTimer();
         DataFromFile data = IniData();
-
         Set<MedioComunicacion> notificadores = IniMedioComunicacion(IniDiscover());
         Set<Observable> observables = ListMedioComunicacionObservable(notificadores);
         Notificador notificador = new Notificador(notificadores);
         Adapter adapter = IniAdapter(data.ListarMateriasInscriptas(),notificador);
         AdministradorMaterias administradorMaterias = IniAdministradorMateria(data.ListarMateriasAulas());
+        //Add lista
         administradorMaterias.addObserver(adapter);
         data.addFilter(administradorMaterias);
         timer.addFilter(data);

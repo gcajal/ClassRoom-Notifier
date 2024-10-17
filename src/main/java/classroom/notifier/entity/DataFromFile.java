@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class DataFromFile implements Filter {
+public class DataFromFile  implements Filter {
     private String archivosOrigenMaterias;
     private String archivosOrigenInscriptas;
     List<Filter> filters;
@@ -84,7 +84,12 @@ public class DataFromFile implements Filter {
     }
 
     @Override
-    public void execute(Map<String, String> asignacion) {
+    public void execute(Object obj) {
+        Map<String,String> datos = this.ListarMateriasAulas();
+        notificarFilter(datos);
+    }
 
+    private void notificarFilter(Object obj){
+        this.filters.forEach((i) -> i.execute(obj));
     }
 }

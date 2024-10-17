@@ -1,6 +1,7 @@
 package classroom.notifier;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import classroom.notifier.entity.Alumno;
 import classroom.notifier.implement.MedioComunicacion;
@@ -8,10 +9,11 @@ import classroom.notifier.implement.MedioComunicacion;
 public class Notificador {
 
     private Set<MedioComunicacion> notificadores;
-
+    private String tipoNotificacion;
 
     Notificador(Set<MedioComunicacion> notificadores) {
         this.notificadores = notificadores;
+        this.tipoNotificacion = "Todo";
     }
 
     void Notificar(Map<String, String> AsignacionNueva, Map<String, List<Alumno>> destinatario) {
@@ -27,8 +29,6 @@ public class Notificador {
                             notificador.Notificar(materia,aula,Alumnos);
                         });
 
-
-
                     });
 
                 }
@@ -36,5 +36,11 @@ public class Notificador {
                 System.out.println("Error: " + ex);
             }
         }
+    }
+
+
+
+    public Set<String> getNotificadores(){
+        return this.notificadores.stream().map(MedioComunicacion::getMedio).collect(Collectors.toSet());
     }
 }

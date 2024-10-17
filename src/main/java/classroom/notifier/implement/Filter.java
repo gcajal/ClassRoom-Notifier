@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface Filter {
 
-    public void execute(Map<String,String> asignacion);
+    void execute(Object obj);
 }
