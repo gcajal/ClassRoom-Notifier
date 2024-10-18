@@ -56,11 +56,23 @@ public class DataFromFile  implements Filter {
 
             // Crear instancia de ObjectMapper
             JSONObject json = new JSONObject(content);
-            JSONArray materias = json.getJSONArray("materias");
+            JSONArray asignacion = json.getJSONArray("asignacion");
             // Recorrer los elementos del JSONArray
-            for (int i = 0; i < materias.length(); i++) {
-                String nombreMateria = materias.getString(i);
+            for (int i = 0; i < asignacion.length(); i++) {
+                JSONObject asignacionMateria = asignacion.getJSONObject(i);
+                String nombreMateria = asignacionMateria.getString("materia");
+                JSONArray alumnosArr = asignacionMateria.getJSONArray("alumnos");
+                List<Alumno> alumnos = new ArrayList<Alumno>();
+                for (int j = 0; j < alumnosArr.length(); j++) {
+                    JSONObject alumno = alumnosArr.getJSONObject(j);
+                    String nombre = alumno.getString("Nombre");
+                    String email = alumno.getString("Email");
+                    String telefono = alumno.getString("Telefono");;
+                    String documento = alumno.getString("Documento");;
+                    alumnos.add(new Alumno(nombre,email,telefono,documento));
+                }
 
+                resultado.put(nombreMateria,alumnos);
                 //resultado.add(nombreMateria);
             }
         } catch (Exception e) {

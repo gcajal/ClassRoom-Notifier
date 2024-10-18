@@ -1,0 +1,45 @@
+{ "asignacion":
+  [
+    {"materia":"001 Matemáticas"
+  ,"alumnos":[
+    {
+      "Nombre": "Juan Pérez",
+      "Email": "juan.perez@example.com",
+      "Telefono": "+54 11 1234-5678",
+      "Documento": "DNI 12345678"
+    },
+    {
+      "Nombre": "María Gómez",
+      "Email": "maria.gomez@example.com",
+      "Telefono": "+54 11 8765-4321",
+      "Documento": "DNI 87654321"
+    },
+    {
+      "Nombre": "Carlos Sánchez",
+      "Email": "carlos.sanchez@example.com",
+      "Telefono": "+54 11 2345-6789",
+      "Documento": "DNI 23456789"
+    }
+  ]}
+  ,{"materia":"002 PP2" ,"alumnos":[
+    {
+      "Nombre": "Juan Pérez",
+      "Email": "juan.perez@example.com",
+      "Telefono": "+54 11 1234-5678",
+      "Documento": "DNI 12345678"
+    },
+    {
+      "Nombre": "María Gómez",
+      "Email": "maria.gomez@example.com",
+      "Telefono": "+54 11 8765-4321",
+      "Documento": "DNI 87654321"
+    },
+    {
+      "Nombre": "Carlos Sánchez",
+      "Email": "carlos.sanchez@example.com",
+      "Telefono": "+54 11 2345-6789",
+      "Documento": "DNI 23456789"
+    }
+  ]}
+  ]
+}

@@ -20,6 +20,6 @@ public class NotificadorDefault extends Observable implements MedioComunicacion 
 
 	@Override
 	public String getMedio() {
-		return "View";
+		return "Default";
 	}
 }

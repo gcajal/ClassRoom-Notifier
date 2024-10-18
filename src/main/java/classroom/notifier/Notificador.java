@@ -13,7 +13,7 @@ public class Notificador {
 
     Notificador(Set<MedioComunicacion> notificadores) {
         this.notificadores = notificadores;
-        this.tipoNotificacion = "Todo";
+        this.tipoNotificacion = "Default";
     }
 
     void Notificar(Map<String, String> AsignacionNueva, Map<String, List<Alumno>> destinatario) {
@@ -23,12 +23,14 @@ public class Notificador {
                 if (!this.notificadores.isEmpty()) {
                     this.notificadores.forEach(notificador ->
                     {
-                        AsignacionNueva.forEach((materia,aula) -> {
-                            List<Alumno> Alumnos = destinatario.getOrDefault(materia,new ArrayList<Alumno>());
-                            if(!Alumnos.isEmpty())
-                            notificador.Notificar(materia,aula,Alumnos);
-                        });
-
+                        if(this.tipoNotificacion.equals("Todo") || this.tipoNotificacion.equals(notificador.getMedio())) {
+                            AsignacionNueva.forEach((materia, aula) -> {
+                                List<Alumno> Alumnos = destinatario.getOrDefault(materia, new ArrayList<Alumno>());
+                                if (!Alumnos.isEmpty()) {
+                                    notificador.Notificar(materia, aula, Alumnos);
+                                }
+                            });
+                        }
                     });
 
                 }

@@ -79,7 +79,7 @@ public class FactoryClassroom {
         if(args.length > 1)
             return new DataFromFile(args[0],args[1]);
         else
-            return new DataFromFile("stockNotificar.json","stockActual.json");
+            return new DataFromFile("alumnosMateria.json","stockActual.json");
     }
 
     private AdministradorMaterias IniAdministradorMateria(Map<String,String> materias ){
