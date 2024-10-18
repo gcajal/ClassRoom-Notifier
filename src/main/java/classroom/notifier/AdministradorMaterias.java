@@ -22,6 +22,7 @@ public class AdministradorMaterias extends Observable implements Filter {
             Map<String, String> diferencia = this.Comparador.comparar(this.Materias, Novedad);
             if (!diferencia.isEmpty()) {
                 Materias = Novedad;
+                setChanged();
                 notifyObservers(diferencia);
             }
         }

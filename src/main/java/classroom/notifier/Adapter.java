@@ -24,8 +24,10 @@ public class Adapter extends Observable implements Observer {
         if( arg instanceof Map<?,?>){
             notificador.Notificar((Map<String, String>) arg,Inscriptos);
         }
-        else
+        else {
+            setChanged();
             notifyObservers(arg);
+        }
 
     }
 }
