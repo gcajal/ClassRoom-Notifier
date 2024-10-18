@@ -23,7 +23,9 @@ class ClassroomNotifierTest {
                 ,"stockActual.json"
         };
         ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
-
+        Map<String,String> novedad = classUnderTest.getDatabase().ListarMateriasAulas();
+        novedad.replace("001 Matemáticas","7321");
+        classUnderTest.getAdministradorMaterias().execute(novedad);
         assertTrue(true, "EvaluarDiferencias should return 'true'");
     }
 

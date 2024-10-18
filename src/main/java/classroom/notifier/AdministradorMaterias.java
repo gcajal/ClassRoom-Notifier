@@ -19,7 +19,7 @@ public class AdministradorMaterias extends Observable implements Filter {
     public void execute(Object obj) {
         if(obj instanceof Map<?,?>) {
             Map<String, String> Novedad = (Map<String, String>)obj;
-            Map<String, String> diferencia = this.Comparador.comparar(this.Materias, Novedad);
+            Map<String, String> diferencia = this.Comparador.comparar(Novedad,this.Materias);
             if (!diferencia.isEmpty()) {
                 Materias = Novedad;
                 setChanged();
