@@ -23,7 +23,7 @@ public class Notificador {
                 if (!this.notificadores.isEmpty()) {
                     this.notificadores.forEach(notificador ->
                     {
-                        if(this.tipoNotificacion.equals("Todo") || this.tipoNotificacion.equals(notificador.getMedio())) {
+                        if(this.tipoNotificacion.equals("Default") || this.tipoNotificacion.equals(notificador.getMedio())) {
                             AsignacionNueva.forEach((materia, aula) -> {
                                 List<Alumno> Alumnos = destinatario.getOrDefault(materia, new ArrayList<Alumno>());
                                 if (!Alumnos.isEmpty()) {

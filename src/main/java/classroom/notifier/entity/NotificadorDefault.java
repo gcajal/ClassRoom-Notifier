@@ -15,6 +15,7 @@ public class NotificadorDefault extends Observable implements MedioComunicacion 
 	@Override
 	public void Notificar(String Materia,String Aula, List<Alumno> destinatarios) {
 		String result = Materia + ": " + Aula;
+		setChanged();
 		notifyObservers(result);
 	}
 
