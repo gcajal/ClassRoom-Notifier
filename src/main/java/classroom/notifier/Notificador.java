@@ -40,7 +40,13 @@ public class Notificador {
         }
     }
 
+    public boolean setNotificador(String notificador){
+        if(!this.getNotificadores().contains(notificador))
+            return false;
 
+        this.tipoNotificacion = notificador;
+        return true;
+    }
 
     public Set<String> getNotificadores(){
         return this.notificadores.stream().map(MedioComunicacion::getMedio).collect(Collectors.toSet());

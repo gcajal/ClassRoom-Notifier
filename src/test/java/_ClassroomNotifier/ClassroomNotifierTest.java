@@ -51,4 +51,16 @@ class ClassroomNotifierTest {
         Map<String,String> mapa = data.ListarMateriasAulas();
         assertTrue(lista != null && mapa != null, "EvaluarDiferencias should return 'true'");
     }
+
+    @Test void validSetMedioNotificacion() {
+        String[] args = new String[]{
+                "alumnosMateria.json"
+                ,"stockActual.json"
+        };
+        ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
+        boolean ret1 = classUnderTest.getNotificador().setNotificador("Test2");
+        boolean ret2 = classUnderTest.getNotificador().setNotificador("Default");
+
+        assertTrue(ret2 && !ret1, "EvaluarDiferencias should return 'true'");
+    }
 }
