@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClassroomNotifierTest {
     @Test void someLibraryMethodReturnsTrue() {
         String[] args = new String[]{
-                "stockNotificar.json"
+                "alumnosMateria.json"
                 ,"stockActual.json"
         };
         ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
@@ -43,7 +43,7 @@ class ClassroomNotifierTest {
     }
 
     @Test void validReadFile(){
-        DataFromFile data = new DataFromFile("stockNotificar.json","stockActual.json");
+        DataFromFile data = new DataFromFile("alumnosMateria.json","stockActual.json");
 
         Map<String, List<Alumno>> lista = data.ListarMateriasInscriptas();
         Map<String,String> mapa = data.ListarMateriasAulas();
