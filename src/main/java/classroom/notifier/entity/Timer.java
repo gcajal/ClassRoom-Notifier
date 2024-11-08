@@ -14,7 +14,7 @@ public class Timer {
         if(args.length > 2)
             this.frecuencia = Integer.decode(args[2]);
         else
-            this.frecuencia = 10;
+            this.frecuencia = 3000;
 
         this.filters = new ArrayList<Filter>();
 

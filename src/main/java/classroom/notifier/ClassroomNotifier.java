@@ -45,7 +45,8 @@ public class ClassroomNotifier{
 		 this._AdministradorMaterias.addObserver(_Adapter);
 
 		 Observable<String> notifificadorDefault = (Observable<String>) this._Notificador.getNotificadorPorNombre(this._Notificador.getTipoNotificacion());
-		 notifificadorDefault.addObserver(this._Notificador);
+		 if(notifificadorDefault != null)
+		 	notifificadorDefault.addObserver(this._Notificador);
 
 	 }
 
