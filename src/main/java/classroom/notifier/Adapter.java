@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Adapter extends Observable implements Observer {
+public class Adapter  implements Observer<Map<String,String>> {
 
     private Map<String, List<Alumno>> Inscriptos;
     private Notificador notificador;
@@ -20,14 +20,8 @@ public class Adapter extends Observable implements Observer {
     }
 
     @Override
-    public void update(Observable observable, Object arg) {
-        if( arg instanceof Map<?,?>){
-            notificador.Notificar((Map<String, String>) arg,Inscriptos);
-        }
-        else {
-            setChanged();
-            notifyObservers(arg);
-        }
+    public void update(Observable<Map<String,String>> observable, Map<String,String> arg) {
+            notificador.Notificar(arg,Inscriptos);
 
     }
 }

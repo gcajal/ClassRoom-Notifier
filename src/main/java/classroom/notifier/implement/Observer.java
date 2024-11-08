@@ -2,6 +2,6 @@ package classroom.notifier.implement;
 
 import classroom.notifier.entity.Observable;
 
-public interface Observer {
-    public void update(Observable observable, Object arg);
+public interface Observer<T> {
+    public void update(Observable<T> observable, T arg);
 }

@@ -5,7 +5,7 @@ import classroom.notifier.implement.MedioComunicacion;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class NotificadorDefault extends Observable implements MedioComunicacion {
+public class NotificadorDefault extends Observable<String> implements MedioComunicacion {
 
 
 	public NotificadorDefault(){

@@ -3,16 +3,19 @@
  */
 package classroom.notifier;
 
-import classroom.notifier.entity.DataFromFile;
-import classroom.notifier.entity.Timer;
+import classroom.notifier.entity.*;
+import classroom.notifier.implement.MedioComunicacion;
+
+import java.util.Set;
 
 public class ClassroomNotifier{
 
-	private Notificador Notificador;
-	private Adapter Adapter;
-	private Timer Timer;
-	private AdministradorMaterias AdministradorMaterias;
-	private DataFromFile Database;
+	private Notificador _Notificador;
+	private Timer _Timer;
+	private AdministradorMaterias _AdministradorMaterias;
+	//private Adapter Adapter;
+
+	//private DataFromFile Database;
 
 	
 	public ClassroomNotifier(String[] args)
@@ -24,45 +27,39 @@ public class ClassroomNotifier{
 	
 	 private void inicilizar(String[] args)
 	 {
-		FactoryClassroom factoryClassroom = new FactoryClassroom(args);
-		factoryClassroom.Inicialice(this);
+	 	this._Timer = new Timer(args);
+		DataFromFile datos = FactoryDatos.inicializarData(args);
+
+	 	this._AdministradorMaterias = new AdministradorMaterias.Builder()
+				 .agregarComparador()
+				 .agregarDatosActuales(datos.ListarMateriasAulas())
+				 .build();
+
+		 this._Notificador = new Notificador.Builder()
+				 	.agregarNotificadores(args)
+				 	.build();
+		 Adapter _Adapter = new Adapter(datos.ListarMateriasInscriptas(),this._Notificador);
+
+		 _Timer.addFilter(datos);
+		 datos.addFilter(this._AdministradorMaterias);
+		 this._AdministradorMaterias.addObserver(_Adapter);
+
+		 Observable<String> notifificadorDefault = (Observable<String>) this._Notificador.getNotificadorPorNombre(this._Notificador.getTipoNotificacion());
+		 notifificadorDefault.addObserver(this._Notificador);
+
 	 }
 
 
 	public classroom.notifier.Notificador getNotificador() {
-		return Notificador;
+		return this._Notificador;
 	}
 
-	public classroom.notifier.Adapter getAdapter() {
-		return Adapter;
-	}
 
 	public classroom.notifier.AdministradorMaterias getAdministradorMaterias() {
-		return AdministradorMaterias;
-	}
-
-	public DataFromFile getDatabase() {
-		return Database;
+		return this._AdministradorMaterias;
 	}
 
 
-	void setNotificador(classroom.notifier.Notificador notificador) {
-		Notificador = notificador;
-	}
 
-	void setAdapter(classroom.notifier.Adapter adapter) {
-		Adapter = adapter;
-	}
 
-	void setTimer(classroom.notifier.entity.Timer timer) {
-		Timer = timer;
-	}
-
-	void setAdministradorMaterias(classroom.notifier.AdministradorMaterias administradorMaterias) {
-		AdministradorMaterias = administradorMaterias;
-	}
-
-	void setDatabase(DataFromFile database) {
-		Database = database;
-	}
 }

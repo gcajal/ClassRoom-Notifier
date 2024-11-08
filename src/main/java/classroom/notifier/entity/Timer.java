@@ -9,8 +9,13 @@ public class Timer {
     private int frecuencia;
     List<Filter> filters;
 
-    public Timer(int frecuencia){
-        this.frecuencia = frecuencia;
+    public Timer(String[] args){
+
+        if(args.length > 2)
+            this.frecuencia = Integer.decode(args[2]);
+        else
+            this.frecuencia = 10;
+
         this.filters = new ArrayList<Filter>();
 
         this.inicilizar();

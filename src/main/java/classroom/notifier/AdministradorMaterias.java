@@ -8,7 +8,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 import java.util.Map;
 
-public class AdministradorMaterias extends Observable implements Filter {
+public class AdministradorMaterias extends Observable<Map<String,String>> implements Filter {
 
     private Comparador Comparador;
     Map<String,String> Materias;
@@ -62,6 +62,24 @@ public class AdministradorMaterias extends Observable implements Filter {
         } catch (Exception e) {
             //e.printStackTrace();
             System.out.println(e.getMessage());
+        }
+    }
+
+    static class Builder {
+        private Comparador comparador;
+        private Map<String,String> dataActual;
+
+        public Builder agregarComparador(){
+            this.comparador = new Comparador();
+            return this;
+        }
+        public Builder agregarDatosActuales(Map<String,String> data){
+            this.dataActual = data;
+            return this;
+        }
+
+        public AdministradorMaterias build(){
+            return new AdministradorMaterias(this.comparador,dataActual);
         }
     }
 }
