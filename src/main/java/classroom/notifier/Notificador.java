@@ -63,7 +63,7 @@ public class Notificador extends Observable<String> implements Observer<String> 
         if(medios.isEmpty())
             return null;
 
-        return  medios.getFirst();
+        return  medios.get(0);
     }
 
     @Override
