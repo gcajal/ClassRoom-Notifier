@@ -22,14 +22,12 @@ public class ClassroomNotifier{
 	public static  ClassroomNotifier getInstance(String[] args) {
 		if (instance == null) {
 			synchronized (ClassroomNotifier.class) {
-				if (instance == null) {
-					System.out.println("Ini Classroom");
-					instance = new ClassroomNotifier(args);
-				}
+				return instance;
 			}
 
 		}
 		return instance;
+
 	}
 
 	
