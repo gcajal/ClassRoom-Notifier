@@ -13,15 +13,21 @@ public class ClassroomNotifier{
 	private Notificador _Notificador;
 	private Timer _Timer;
 	private AdministradorMaterias _AdministradorMaterias;
+	private static final Object lock = new Object();
 	//private Adapter Adapter;
 
 	//private DataFromFile Database;
 	private static ClassroomNotifier instance = null;
 
-	public static synchronized  ClassroomNotifier getInstance(String[] args) {
+	public static  ClassroomNotifier getInstance(String[] args) {
 		if (instance == null) {
-			System.out.println("Ini Classroom");
-			instance = new ClassroomNotifier(args);
+			synchronized (lock) {
+				if (instance == null) {
+					System.out.println("Ini Classroom");
+					instance = new ClassroomNotifier(args);
+				}
+			}
+
 		}
 		return instance;
 	}
