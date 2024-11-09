@@ -16,12 +16,21 @@ public class ClassroomNotifier{
 	//private Adapter Adapter;
 
 	//private DataFromFile Database;
+	private static ClassroomNotifier instance = null;
+
+	public static synchronized  ClassroomNotifier getInstance() {
+		/*if (instance == null) {
+			instance = new ClassroomNotifier(args);
+		}*/
+		return instance;
+	}
 
 	
 	public ClassroomNotifier(String[] args)
 	{
 		super();
 	    inicilizar(args);
+		this.instance = this;
 	}
 
 	
