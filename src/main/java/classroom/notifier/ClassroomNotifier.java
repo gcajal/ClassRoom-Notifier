@@ -20,6 +20,7 @@ public class ClassroomNotifier{
 
 	public static synchronized  ClassroomNotifier getInstance(String[] args) {
 		if (instance == null) {
+			System.out.println("Ini Classroom");
 			instance = new ClassroomNotifier(args);
 		}
 		return instance;
