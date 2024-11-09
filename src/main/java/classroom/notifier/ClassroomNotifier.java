@@ -18,10 +18,10 @@ public class ClassroomNotifier{
 	//private DataFromFile Database;
 	private static ClassroomNotifier instance = null;
 
-	public static synchronized  ClassroomNotifier getInstance() {
-		/*if (instance == null) {
+	public static synchronized  ClassroomNotifier getInstance(String[] args) {
+		if (instance == null) {
 			instance = new ClassroomNotifier(args);
-		}*/
+		}
 		return instance;
 	}
 
