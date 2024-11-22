@@ -1,7 +1,10 @@
 package classroom.notifier.entity;
 
+import classroom.notifier.implement.Notificador;
+
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.URL;
@@ -10,7 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
@@ -18,9 +23,35 @@ public class Discover<T> {
     private String configuratorPath;
     private Class<?> cls;
 
-    public Discover(String path,Class<T> cls){
+    public Discover(String path){
         this.configuratorPath = path;
         this.cls = cls;
+    }
+
+    public Set<Notificador> InicializarExtensiones(){
+        return Instanciar(buscarImplementaciones());
+    }
+
+
+    public Set<Notificador> Instanciar(List<Class> clases) {
+        Set<Notificador> listaImplementaciones = new HashSet<>();
+        clases.forEach((clazz) ->{
+            Notificador instance = null;
+            try {
+                instance = (Notificador) clazz.getDeclaredConstructor().newInstance();
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+            listaImplementaciones.add(instance);
+        });
+
+        return listaImplementaciones;
     }
 
     protected  List<Class> buscarImplementaciones(){

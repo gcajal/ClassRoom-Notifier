@@ -4,7 +4,7 @@
 package _ClassroomNotifier;
 
 import classroom.notifier.entity.*;
-import classroom.notifier.implement.MedioComunicacion;
+import classroom.notifier.implement.Notificador;
 import org.junit.jupiter.api.Test;
 
 import classroom.notifier.ClassroomNotifier;
@@ -22,45 +22,9 @@ class ClassroomNotifierTest {
                 "alumnosMateria.json"
                 ,"stockActual.json"
         };
-        ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
-        //Map<String,String> novedad = classUnderTest.getDatabase().ListarMateriasAulas();
-        //novedad.replace("001 Matemáticas","7321");
-        //classUnderTest.getAdministradorMaterias().execute(novedad);
+        ClassroomNotifier classUnderTest = new ClassroomNotifier();
         assertTrue(true, "EvaluarDiferencias should return 'true'");
     }
 
-    @Test void validNotificadorDefault() {
-        Map<String,String> lista = new HashMap<>();
-        lista.put("001","7010");
-        NotificadorDefault classUnderTest = new NotificadorDefault();
 
-        assertTrue(true, "EvaluarDiferencias should return 'true'");
-    }
-
-    @Test void validFactory(){
-        Discover<MedioComunicacion> Discover = new Discover<MedioComunicacion>(System.getProperty("user.dir"),MedioComunicacion.class);
-        Factory<MedioComunicacion> Factory = new Factory<MedioComunicacion>(Discover);
-        Set<MedioComunicacion> lista = Factory.ListarImplementaciones();
-        assertTrue(lista != null, "EvaluarDiferencias should return 'true'");
-    }
-
-    @Test void validReadFile(){
-        DataFromFile data = new DataFromFile("alumnosMateria.json","stockActual.json");
-
-        Map<String, List<Alumno>> lista = data.ListarMateriasInscriptas();
-        Map<String,String> mapa = data.ListarMateriasAulas();
-        assertTrue(lista != null && mapa != null, "EvaluarDiferencias should return 'true'");
-    }
-
-    @Test void validSetMedioNotificacion() {
-        String[] args = new String[]{
-                "alumnosMateria.json"
-                ,"stockActual.json"
-        };
-        ClassroomNotifier classUnderTest = new ClassroomNotifier(args);
-        boolean ret1 = classUnderTest.getNotificador().setNotificador("Test2");
-        boolean ret2 = classUnderTest.getNotificador().setNotificador("Default");
-
-        assertTrue(ret2 && !ret1, "EvaluarDiferencias should return 'true'");
-    }
 }

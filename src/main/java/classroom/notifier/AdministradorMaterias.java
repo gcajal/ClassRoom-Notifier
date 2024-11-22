@@ -2,47 +2,26 @@ package classroom.notifier;
 
 import classroom.notifier.entity.Comparador;
 import classroom.notifier.entity.Observable;
-import classroom.notifier.implement.Filter;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class AdministradorMaterias extends Observable<Map<String,String>> implements Filter {
+public class AdministradorMaterias {
 
     private Comparador Comparador;
     Map<String,String> Materias;
 
-    AdministradorMaterias(Comparador Comparador,Map<String,String> Materias){
+    AdministradorMaterias(Comparador Comparador){
         this.Comparador = Comparador;
-        this.Materias = Materias;
-    }
-    @Override
-    public void execute(Object obj) {
-        if(obj instanceof Map<?,?>) {
-            Map<String, String> Novedad = (Map<String, String>)obj;
-            Map<String, String> diferencia = this.Comparador.comparar(Novedad,this.Materias);
-            if (!diferencia.isEmpty()) {
-                Materias = Novedad;
-                setChanged();
-                notifyObservers(diferencia);
-            }
-        }
+        this.Materias = new HashMap<>();
+
     }
 
-    static class Builder {
-        private Comparador comparador;
-        private Map<String,String> dataActual;
+    public void recibirActualización(Map<String, String> Novedad) {
+        if(!Materias.isEmpty())
+            this.Comparador.comparar(Novedad,this.Materias);
 
-        public Builder agregarComparador(){
-            this.comparador = new Comparador();
-            return this;
-        }
-        public Builder agregarDatosActuales(Map<String,String> data){
-            this.dataActual = data;
-            return this;
-        }
-
-        public AdministradorMaterias build(){
-            return new AdministradorMaterias(this.comparador,dataActual);
-        }
+        Materias = Novedad;
     }
+
 }
