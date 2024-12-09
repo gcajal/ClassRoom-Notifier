@@ -11,8 +11,6 @@ import classroom.notifier.implement.Observer;
 import java.util.Set;
 
 public class FactoryClassroom {
-
-
     public ClassroomNotifier Inicializar(InformadorDatos informadorDatos, String path){
 
         ClassroomNotifier classroomNotifier = new ClassroomNotifier();
@@ -24,10 +22,10 @@ public class FactoryClassroom {
         Comparador Comparador = new Comparador(NovedadAdapter);
         AdministradorMaterias AdministradorMaterias = new AdministradorMaterias(Comparador);
 
-        DatosListener DatosListener = new DatosListener(AdministradorMaterias);
+        DatosListener datosListener = new DatosListener(AdministradorMaterias);
 
         if(informadorDatos != null)
-            informadorDatos.addObserver(DatosListener);
+            informadorDatos.agregarObservador(datosListener);
 
         return classroomNotifier;
     }

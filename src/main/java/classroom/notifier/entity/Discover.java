@@ -22,17 +22,13 @@ import java.util.stream.Collectors;
 public class Discover<T> {
     private String configuratorPath;
     private Class<?> cls;
-
     public Discover(String path){
         this.configuratorPath = path;
         this.cls = cls;
     }
-
     public Set<Notificador> InicializarExtensiones(){
         return Instanciar(buscarImplementaciones());
     }
-
-
     public Set<Notificador> Instanciar(List<Class> clases) {
         Set<Notificador> listaImplementaciones = new HashSet<>();
         clases.forEach((clazz) ->{

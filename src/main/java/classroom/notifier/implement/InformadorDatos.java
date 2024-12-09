@@ -1,13 +1,15 @@
 package classroom.notifier.implement;
 
+import classroom.notifier.entity.DatosListener;
 import classroom.notifier.entity.Observable;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class  InformadorDatos extends Observable {
+public interface  InformadorDatos {
 
-    public abstract Map<String,String> Leer();
+    public Map<String,String> Leer();
+    public void agregarObservador(Object o);
 
 }

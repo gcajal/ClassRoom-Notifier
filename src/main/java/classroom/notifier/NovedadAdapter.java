@@ -3,18 +3,13 @@ package classroom.notifier;
 import java.util.Map;
 
 public class NovedadAdapter {
-
     private ClassroomNotifier classroomNotifier;
-
     NovedadAdapter(ClassroomNotifier classroomNotifier){
-
         this.classroomNotifier = classroomNotifier;
     }
-
     public void dispararMensaje(Map<String,String> novedad){
         if(!novedad.isEmpty())
             classroomNotifier.notifyObservers(crearMensaje(novedad));
-
     }
     String crearMensaje(Map<String,String> novedad){
 
@@ -26,8 +21,6 @@ public class NovedadAdapter {
             mensaje.append(aula);
             mensaje.append("/n");
         });
-
         return mensaje.toString();
     }
-
 }
