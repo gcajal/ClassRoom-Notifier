@@ -6,6 +6,7 @@ package classroom.notifier;
 import classroom.notifier.entity.*;
 import classroom.notifier.implement.Observer;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -13,11 +14,16 @@ import java.util.stream.Collectors;
 
 public class ClassroomNotifier implements Observable{
 	private Map<String, Observer> _observers;
-	private Map<String, Observer> currentObservers;
+	private Map<String, Observer> observerActual;
 	private boolean changed;
 
+	public ClassroomNotifier(){
+		this._observers = new HashMap<>();
+		this.observerActual = new HashMap<>();
+	}
+
 	@Override
-	public synchronized void addObserver(Observer o) {
+	public void addObserver(Observer o) {
 		if (o == null)
 			throw new NullPointerException();
 
@@ -27,7 +33,7 @@ public class ClassroomNotifier implements Observable{
 
 	@Override
 	public void addCurrentObservers(String name) {
-		currentObservers.put(name, _observers.get(name));
+		observerActual.put(name, _observers.get(name));
 	}
 
 	public Set<String> getAllObserversNames() {
@@ -36,11 +42,11 @@ public class ClassroomNotifier implements Observable{
 
 
 	public Set<Observer> getCurrentObservers() {
-		return currentObservers.values().stream().collect(Collectors.toSet());
+		return observerActual.values().stream().collect(Collectors.toSet());
 	}
 
 	public void refreshObservers(String name) {
-		Iterator<Map.Entry<String, Observer>> iterator = currentObservers.entrySet().iterator();
+		Iterator<Map.Entry<String, Observer>> iterator = observerActual.entrySet().iterator();
 
 		while (iterator.hasNext()) {
 			Map.Entry<String, Observer> entry = iterator.next();
@@ -53,7 +59,7 @@ public class ClassroomNotifier implements Observable{
 	}
 
 
-	public synchronized void notifyObservers(Object arg) {
+	public void notifyObservers(Object arg) {
 		getCurrentObservers().forEach(observer -> observer.update(arg));
 	}
 }
