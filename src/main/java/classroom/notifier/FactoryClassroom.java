@@ -14,7 +14,7 @@ public class FactoryClassroom {
     public ClassroomNotifier Inicializar(InformadorDatos informadorDatos, String path){
 
         ClassroomNotifier classroomNotifier = new ClassroomNotifier();
-        Discover Discoverer = new Discover(path);
+        Discover Discoverer = new Discover(path, Object.class.getClass());
         Set<Observer> notificadores = Discoverer.InicializarExtensiones();
         notificadores.forEach(classroomNotifier::addObserver);
 

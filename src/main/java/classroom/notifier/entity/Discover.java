@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class Discover<T> {
     private String configuratorPath;
     private Class<?> cls;
-    public Discover(String path){
+    public Discover(String path, Class cls){
         this.configuratorPath = path;
         this.cls = cls;
     }
