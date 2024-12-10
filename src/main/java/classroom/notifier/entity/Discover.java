@@ -1,6 +1,7 @@
 package classroom.notifier.entity;
 
 import classroom.notifier.implement.Notificador;
+import classroom.notifier.implement.Observer;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,15 +27,15 @@ public class Discover<T> {
         this.configuratorPath = path;
         this.cls = cls;
     }
-    public Set<Notificador> InicializarExtensiones(){
+    public Set<Observer> InicializarExtensiones(){
         return Instanciar(buscarImplementaciones());
     }
-    public Set<Notificador> Instanciar(List<Class> clases) {
-        Set<Notificador> listaImplementaciones = new HashSet<>();
+    public Set<Observer> Instanciar(List<Class> clases) {
+        Set<Observer> listaImplementaciones = new HashSet<>();
         clases.forEach((clazz) ->{
-            Notificador instance = null;
+            Observer instance = null;
             try {
-                instance = (Notificador) clazz.getDeclaredConstructor().newInstance();
+                instance = (Observer) clazz.getDeclaredConstructor().newInstance();
             } catch (InstantiationException e) {
                 throw new RuntimeException(e);
             } catch (IllegalAccessException e) {
