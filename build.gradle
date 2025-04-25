@@ -28,15 +28,6 @@ test {
     useJUnitPlatform()
 }
 
-sourceSets{
-    test{
-        resources {
-            srcDir file('src/test/java/tests/it0')
-            exclude '**./*.java'
-        }
-    }
-}
-
 task copyJars(type: Copy) {
     from configurations.runtimeClasspath
     into "$buildDir/libs"
