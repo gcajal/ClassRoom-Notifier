@@ -25,7 +25,8 @@ public class ClassroomNotifier implements Observable{
 	@Override
 	public void addObserver(Observer o) {
 		if (o == null)
-			throw new NullPointerException();
+			System.out.println("valor null -- verificar");
+			//throw new NullPointerException();
 
 		//observers.add(o);
 		this._observers.put(o.getClass().getSimpleName(),o);
