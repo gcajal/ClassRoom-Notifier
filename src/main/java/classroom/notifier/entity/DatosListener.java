@@ -12,6 +12,6 @@ public class DatosListener implements Observer {
     }
     @Override
     public void update( Object data) {
-        this.administradorMaterias.recibirActualización((Map<String, String>) data);
+        this.administradorMaterias.recibirActualizacion((Map<String, String>) data);
     }
 }

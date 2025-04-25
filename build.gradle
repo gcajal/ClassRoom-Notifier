@@ -9,14 +9,35 @@ repositories {
     mavenCentral()
 }
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-
     implementation "org.json:json:20141113"
+    implementation 'com.github.FabiMamani:Telegram:main-SNAPSHOT'
+    implementation 'com.github.FabiMamani:Mail:main-SNAPSHOT'
 
 }
 
 test {
     useJUnitPlatform()
+}
+
+sourceSets{
+    test{
+        resources {
+            srcDir file('src/test/java/tests/it0')
+            exclude '**./*.java'
+        }
+    }
+}
+
+task copyJars(type: Copy) {
+    from configurations.runtimeClasspath
+    into "$buildDir/libs"
 }

@@ -9,13 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class DataFromFile  extends InformadorDatos {
+public class DataFromFile implements InformadorDatos, Runnable {
     private String archivosOrigenMaterias;
-
-    public DataFromFile(String archivosOrigenInscriptas, String archivosOrigenMaterias){
+    private Set<Observer> observador;
+    public DataFromFile(String archivosOrigenMaterias){
         this.archivosOrigenMaterias = archivosOrigenMaterias;
+        this.observador = new HashSet<>();
     }
-
     @Override
     public Map<String, String> Leer() {
 
@@ -37,9 +37,14 @@ public class DataFromFile  extends InformadorDatos {
             e.printStackTrace();
         }
 
-        if(!resultado.isEmpty()) this.notifyObservers(resultado);
-
+        if(!resultado.isEmpty())
+            observador.forEach(o -> o.update(resultado));
         return resultado;
+    }
+
+    @Override
+    public void agregarObservador(Object o) {
+        observador.add((Observer) o);
     }
 
 
@@ -56,4 +61,8 @@ public class DataFromFile  extends InformadorDatos {
 
     }
 
+    @Override
+    public void run() {
+        Leer();
+    }
 }

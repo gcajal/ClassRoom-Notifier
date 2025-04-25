@@ -1,28 +1,33 @@
 package _ClassroomNotifier;
 
-import classroom.notifier.entity.DatosListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Timer {
+public class Timer implements Runnable {
     private int frecuencia;
-    private DataFromFile DataFromFile;
+    private Runnable _runnable;
 
-    public Timer(int frecuencia,DataFromFile _DataFromFile){
+    public Timer(int frecuencia,Runnable runnable){
         this.frecuencia = frecuencia;
-        this.DataFromFile = _DataFromFile;
-        this.inicilizar();
+        this._runnable = runnable;
+
     }
 
-    private void inicilizar(){
+   /* private void inicilizar(){
         javax.swing.Timer timer = new javax.swing.Timer(frecuencia, e -> {
             //changesDetectedVisible = !changesDetectedVisible;
-            this.DataFromFile.Leer();
+            this.dataFromFile.Leer();
         });
         timer.setRepeats(true);
         timer.start();
+    }*/
+
+    @Override
+    public void run() {
+        while (true){
+            try {
+                Thread.sleep(this.frecuencia);
+                _runnable.run();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
-
-
 }

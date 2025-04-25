@@ -77,7 +77,7 @@ public class Discover<T> {
                                     try {
                                         Class<?> clazz = cl.loadClass(className);
 
-                                        if (cls.isAssignableFrom(clazz) && !clazz.isInterface()) {
+                                        if ((cls.isAssignableFrom(clazz) || cls.isAssignableFrom(clazz.getClass())) && !clazz.isInterface()) {
                                             // Crea una instancia de la clase y la agrega a la lista
 
                                             clases.add(clazz);
