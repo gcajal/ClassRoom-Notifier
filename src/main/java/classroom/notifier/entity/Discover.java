@@ -76,10 +76,10 @@ public class Discover<T> {
                                     String className = entry.getName().replace("/", ".").replace(".class", "");
                                     try {
                                         Class<?> clazz = cl.loadClass(className);
-
+                                        System.out.println(((cls.isAssignableFrom(clazz) || cls.isAssignableFrom(clazz.getClass())) && !clazz.isInterface()));
                                         if ((cls.isAssignableFrom(clazz) || cls.isAssignableFrom(clazz.getClass())) && !clazz.isInterface()) {
                                             // Crea una instancia de la clase y la agrega a la lista
-
+                                            System.out.println("Agregamos clases");
                                             clases.add(clazz);
                                             //@SuppressWarnings("unchecked")
                                             //T instance = (T) clazz.getDeclaredConstructor().newInstance();
