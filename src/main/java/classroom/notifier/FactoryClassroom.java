@@ -1,6 +1,9 @@
 package classroom.notifier;
 
-import classroom.notifier.entity.*;
+
+import classroom.notifier.entity.Comparador;
+import classroom.notifier.entity.DatosListener;
+import classroom.notifier.entity.Discoverer;
 import classroom.notifier.implement.InformadorDatos;
 import classroom.notifier.implement.Notificador;
 import classroom.notifier.implement.Observer;
