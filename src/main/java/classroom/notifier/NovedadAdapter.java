@@ -19,7 +19,7 @@ public class NovedadAdapter {
             mensaje.append(materia);
             mensaje.append(", la nueva aula es ");
             mensaje.append(aula);
-            mensaje.append("/n");
+            mensaje.append(" ");
         });
         return mensaje.toString();
     }

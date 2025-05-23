@@ -34,6 +34,7 @@ public class ClassroomNotifier implements Observable{
 
 	@Override
 	public void addCurrentObservers(String name) {
+		deleteCurrentObserver();
 		observerActual.put(name, _observers.get(name));
 	}
 
@@ -45,6 +46,11 @@ public class ClassroomNotifier implements Observable{
 	public Set<Observer> getCurrentObservers() {
 		return observerActual.values().stream().collect(Collectors.toSet());
 	}
+
+	public void deleteCurrentObserver(){
+		observerActual.clear();
+	}
+
 
 	public void refreshObservers(String name) {
 		Iterator<Map.Entry<String, Observer>> iterator = observerActual.entrySet().iterator();
