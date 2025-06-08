@@ -1,6 +1,6 @@
-package classroom.notifier.entity;
+package classroom.notifier.inicializacion;
 
-import classroom.notifier.implement.Observer;
+import classroom.notifier.interfaces.Observer;
 
 import java.io.File;
 import java.io.FileNotFoundException;

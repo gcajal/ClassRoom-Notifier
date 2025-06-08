@@ -3,16 +3,9 @@
  */
 package _ClassroomNotifier;
 
-import classroom.notifier.entity.*;
-import classroom.notifier.implement.Notificador;
 import org.junit.jupiter.api.Test;
 
-import classroom.notifier.ClassroomNotifier;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import classroom.notifier.aplicacion.ClassroomNotifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 

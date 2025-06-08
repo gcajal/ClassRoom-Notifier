@@ -1,15 +1,15 @@
-package classroom.notifier;
+package classroom.notifier.aplicacion;
 
 import java.util.Map;
 
 public class NovedadAdapter {
-    private ClassroomNotifier classroomNotifier;
-    NovedadAdapter(ClassroomNotifier classroomNotifier){
-        this.classroomNotifier = classroomNotifier;
+    private Distribuidor distribuidor;
+    public NovedadAdapter(Distribuidor distribuidor){
+        this.distribuidor = distribuidor;
     }
     public void dispararMensaje(Map<String,String> novedad){
         if(!novedad.isEmpty())
-            classroomNotifier.notifyObservers(crearMensaje(novedad));
+            distribuidor.distribuir(crearMensaje(novedad));
     }
     String crearMensaje(Map<String,String> novedad){
 

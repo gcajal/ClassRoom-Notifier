@@ -1,8 +1,8 @@
 package _ClassroomNotifier;
 
 
-import classroom.notifier.entity.Discoverer;
-import classroom.notifier.implement.Observer;
+import classroom.notifier.inicializacion.Discoverer;
+import classroom.notifier.interfaces.Observer;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

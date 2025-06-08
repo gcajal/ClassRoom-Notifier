@@ -1,7 +1,7 @@
 package tests.it0;
 
-import classroom.notifier.entity.Discoverer;
-import classroom.notifier.implement.Observer;
+import classroom.notifier.inicializacion.Discoverer;
+import classroom.notifier.interfaces.Observer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
