@@ -15,15 +15,14 @@ public class FactoryClassroom {
         Discoverer discoverer = new Discoverer();
         Set<Observer> notificadores =  discoverer.discover(path);
         notificadores.forEach(classroomNotifier::addObserver);
+        NovedadAdapter NovedadAdapter = new NovedadAdapter(new Distribuidor(classroomNotifier), new Mensaje());
+        Diferenciador Diferenciador = new Diferenciador();
+        OrquestadorCambioAula OrquestadorCambioAula = new OrquestadorCambioAula(Diferenciador, new ManejadorDiferencia(NovedadAdapter));
 
-        NovedadAdapter NovedadAdapter = new NovedadAdapter(new Distribuidor(classroomNotifier));
-        Comparador Comparador = new Comparador(NovedadAdapter);
-        AdministradorMateriaAula AdministradorMateriaAula = new AdministradorMateriaAula(Comparador);
-
-        DatosListener datosListener = new DatosListener(AdministradorMateriaAula);
+        AsignacionObserver asignacionObserver = new AsignacionObserver(OrquestadorCambioAula);
 
         if(informadorDatos != null)
-            informadorDatos.suscribir(datosListener);
+            informadorDatos.suscribir(asignacionObserver);
 
         return classroomNotifier;
     }
