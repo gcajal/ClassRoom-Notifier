@@ -12,7 +12,7 @@ public class OrquestadorCambioAula {
     }
 
     public void actualizarMaterias(ClassroomMateriaAula novedad) {
-        var diferencia = this.diferenciador.obtenerDiferencias(novedad,this.asignacionMateriaAula);
+        Object diferencia = this.diferenciador.obtenerDiferencias(novedad,this.asignacionMateriaAula);
         asignacionMateriaAula = novedad;
         this.manejadorDiferencia.manejarDiferencia(diferencia);
     }
