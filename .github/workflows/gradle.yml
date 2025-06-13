@@ -33,6 +33,14 @@ jobs:
       run: mkdir -p src/test/java/resources/empty
     - name: Build with Gradle Wrapper (compilar y testear)
       run: ./gradlew build
+    
+    - name: Mostrar resumen de tests
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Test Results
+        path: build/test-results/test/TEST-*.xml
+        reporter: java-junit
 
     - name: Upload test reports
       if: always()
