@@ -29,7 +29,8 @@ jobs:
 
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
-
+    - name: Crear carpeta vacía requerida por el test
+      run: mkdir -p src/test/java/resources/empty
     - name: Build with Gradle Wrapper (compilar y testear)
       run: ./gradlew build
 
