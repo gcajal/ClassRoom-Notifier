@@ -33,13 +33,14 @@ public class US2 {
 
         ClassroomMateriaAula cls_novedad = new ClassroomMateriaAula(_novedad);
 
-        System.out.println(cls_novedad.getMateriasActuales());
-        System.out.println(cls_novedad.getMateriasCambiadas(cls_asig_actuales));
+        //System.out.println(cls_novedad.getMateriasActuales());
+        //System.out.println(this.cls_asig_actuales.getMateriasCambiadas(cls_novedad));
 
         Map<String, String> ret = new HashMap<>();
-        ret.put("PP2","7012");
+        ret.put("PP2","7010");
 
-        Assertions.assertEquals(ret,cls_novedad.getMateriasCambiadas(this.cls_asig_actuales));
+        //Assertions.assertEquals(ret,cls_novedad.getMateriasCambiadas(this.cls_asig_actuales));
+        Assertions.assertEquals(ret,this.cls_asig_actuales.getMateriasCambiadas(cls_novedad));
 
     }
 
@@ -51,8 +52,7 @@ public class US2 {
         asignaciones_sin_cambios.put("SOR","7011");
 
         ClassroomMateriaAula cls_novedad_sin_cambios = new ClassroomMateriaAula(asignaciones_sin_cambios);
-
-        Assertions.assertNull(new Diferenciador().obtenerDiferencias(this.cls_asig_actuales, cls_novedad_sin_cambios));
+        Assertions.assertTrue(this.cls_asig_actuales.getMateriasCambiadas(cls_novedad_sin_cambios).isEmpty());
 
     }
 }
