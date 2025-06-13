@@ -1,4 +1,4 @@
-package tests;
+package it0;
 
 import java.io.File;
 import java.io.FileInputStream;
