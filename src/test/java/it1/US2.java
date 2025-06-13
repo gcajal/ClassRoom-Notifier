@@ -5,6 +5,7 @@ import classroom.notifier.aplicacion.ClassroomMateriaAula;
 import classroom.notifier.aplicacion.Diferenciador;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +25,7 @@ public class US2 {
     }
 
     @Test
-    public void test_1() {
+    public void cambio_aula_satisfactorio() {
         Map<String, String> _novedad = new HashMap<>();
         _novedad.put("PP2","7010");
         _novedad.put("P1","7013");
@@ -43,7 +44,7 @@ public class US2 {
     }
 
     @Test
-    public void test_2() {
+    public void materias_sin_cambio_de_aula() {
         Map<String, String> asignaciones_sin_cambios = new HashMap<>();
         asignaciones_sin_cambios.put("PP2","7012");
         asignaciones_sin_cambios.put("P1","7013");
